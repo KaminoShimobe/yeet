@@ -3,7 +3,7 @@ const TwitchBot = require('twitch-bot');
 const prefix = "!";
 
 const Bot = new TwitchBot({
-  username: 'arion_seabiscuit',
+  username: 'Arion_Seabiscuit',
   oauth: process.env.TWITCH,
   channels: ['FalseVibrato8']
 })
