@@ -18,7 +18,7 @@ Bot.on('error', err => {
 })
  
 Bot.on('message', chatter => {
-  if(chatter.message === '!yeet') {
+  if(chatter.message == '!yeet') {
     Bot.say('YA YEET!')
   }
 })
