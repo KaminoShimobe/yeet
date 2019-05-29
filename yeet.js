@@ -5,7 +5,7 @@ const prefix = "!";
 const Bot = new TwitchBot({
   username: 'arion_seabiscuit',
   oauth: process.env.TWITCH,
-  channels: ['falsevibrato8']
+  channels: ['FalseVibrato8']
 })
  
 Bot.on('join', channel => {
