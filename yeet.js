@@ -1,5 +1,27 @@
 const Discord = require("discord.js");
-const prefix = "";
+const TwitchBot = require('twitch-bot');
+const prefix = "!";
+
+const Bot = new TwitchBot({
+  username: 'arion_seabiscuit',
+  oauth: process.env.TWITCH,
+  channels: ['falsevibrato8']
+})
+ 
+Bot.on('join', channel => {
+  console.log(`Joined channel: ${channel}`)
+  Bot.say('Stream Time :P')	
+})
+ 
+Bot.on('error', err => {
+  console.log(err)
+})
+ 
+Bot.on('message', chatter => {
+  if(chatter.message === '!yeet') {
+    Bot.say('YA YEET!')
+  }
+})
 
 const bot = new Discord.Client({disableEveryone: true})
 
@@ -39,15 +61,19 @@ const bot = new Discord.Client({disableEveryone: true})
 // });
 //        }
 // handleDisconnect();
+
+
+ 
+
 	
 
 bot.on("ready", async () => {
 
 	console.log(`${bot.user.username} is ready!`);
 	
-	bot.user.setPresence({ status: 'online', game: { name: 'Hello World' } });
+	bot.user.setPresence({ status: 'online', game: { name: '!stream' } });
 
-
+	
 
 	try {
 
@@ -64,5 +90,31 @@ bot.on("ready", async () => {
 
 
 });
+
+bot.on("message", async message => {
+	
+	let messageArray = message.content.split(" ");
+
+	let command = messageArray[0];
+
+	let args = messageArray.slice(1);
+
+	
+	
+
+
+	
+
+
+		
+	
+	
+	if(message.author.bot) return;
+	
+if(command === `${prefix}stream`){
+	message.channel.send("False be streamin here: \n https://m.twitch.tv/falsevibrato8/profile \n GO CHECK HER OUT CUZ")
+}
+	
+});	
 
 bot.login(process.env.BOT_TOKEN);
