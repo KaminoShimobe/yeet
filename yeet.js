@@ -10,7 +10,7 @@ const Bot = new TwitchBot({
  
 Bot.on('join', channel => {
   console.log(`Joined channel: ${channel}`)
-  Bot.say('False finna stream bois :D')	
+  Bot.say('We schleep ^_^ Zzz')	
 })
  
 Bot.on('error', err => {
@@ -18,12 +18,12 @@ Bot.on('error', err => {
 })
  
 Bot.on('message', chatter => {
-  if(chatter.message == '!yeet') {
+  if(chatter.message === '!yeet') {
     Bot.say('YA YEET!')
   }
 })
 
-//const bot = new Discord.Client({disableEveryone: true})
+const bot = new Discord.Client({disableEveryone: true})
 
 // var con_fig = {
 // 	host: "",
@@ -67,37 +67,37 @@ Bot.on('message', chatter => {
 
 	
 
-// bot.on("ready", async () => {
+bot.on("ready", async () => {
 
-// 	console.log(`${bot.user.username} is ready!`);
+	console.log(`${bot.user.username} is ready!`);
 	
-// 	bot.user.setPresence({ status: 'online', game: { name: '!stream' } });
+	bot.user.setPresence({ status: 'online', game: { name: '!stream' } });
 
 	
 
-// 	try {
+	try {
 
-// 		let link = await bot.generateInvite(["ADMINISTRATOR"]);
+		let link = await bot.generateInvite(["ADMINISTRATOR"]);
 
-// 		console.log(link);
+		console.log(link);
 
-// 	}	catch(e) {
+	}	catch(e) {
 
-// 		console.log(e.stack);
+		console.log(e.stack);
 
-// 	}
-// //
+	}
+//
 
 
-// });
+});
 
-// bot.on("message", async message => {
+bot.on("message", async message => {
 	
-// 	let messageArray = message.content.split(" ");
+	let messageArray = message.content.split(" ");
 
-// 	let command = messageArray[0];
+	let command = messageArray[0];
 
-// 	let args = messageArray.slice(1);
+	let args = messageArray.slice(1);
 
 	
 	
@@ -109,12 +109,12 @@ Bot.on('message', chatter => {
 		
 	
 	
-// 	if(message.author.bot) return;
+	if(message.author.bot) return;
 	
-// if(command === `${prefix}stream`){
-// 	message.channel.send("False be streamin here: \n https://m.twitch.tv/falsevibrato8/profile \n GO CHECK HER OUT CUZ")
-// }
+if(command === `${prefix}stream`){
+	message.channel.send("False be streamin here: \n https://m.twitch.tv/falsevibrato8/profile \n GO CHECK HER OUT CUZ")
+}
 	
-// });	
+});	
 
-// bot.login(process.env.BOT_TOKEN);
+bot.login(process.env.BOT_TOKEN);
