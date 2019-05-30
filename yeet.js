@@ -19,7 +19,7 @@ Bot.on('error', err => {
 })
  
 Bot.on('message', chatter => {
-  if(chatter.message === '!discord' || chatter.message.indexOf("discord") != -1 || chatter.message.indexOf("Discord") != -1) {
+  if(chatter.message === '!discord' || chatter.message.indexOf("discord") != -1 || chatter.message.indexOf("Discord") != -1 || chatter.message.indexOf("Discord?") != -1 || chatter.message.indexOf("discord?") != -1) {
     Bot.say('Join our discord! We got da horses in da back! \n https://discord.gg/khQuZ62')
   }
 })
