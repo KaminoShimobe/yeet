@@ -1,6 +1,9 @@
 const Discord = require("discord.js");
 const TwitchBot = require('twitch-bot');
 const prefix = "!";
+const mods = new Set();
+const subs = new Set();
+const followers = new Set();
 
 const Bot = new TwitchBot({
   username: 'arion_seabiscuit',
@@ -11,7 +14,8 @@ const Bot = new TwitchBot({
 Bot.on('join', channel => {
   console.log(`Joined channel: ${channel}`)
   var greeting = ['Running it down mid today bois? :O', 'Welcome to a happy and wholesome stream <3', 'False is gonna DEF get tet dandy this time! >:(', 'Hi hi! It is STREAM time! :D']	
-  Bot.say(greeting[Math.floor(Math.random()*3)]);	
+  Bot.say(greeting[Math.floor(Math.random()*3)]);
+ 	
 })
  
 Bot.on('error', err => {
@@ -19,9 +23,28 @@ Bot.on('error', err => {
 })
  
 Bot.on('message', chatter => {
+  if(chatter.message === '!help' || chatter.message.indexOf("help") != -1 || chatter.message.indexOf("Help") != -1) {
+    Bot.say('Contact one of our lovely mods for help with anything!');
+    setTimeout(Bot.say('Except Kamino he a bum :P'), 2000);  
+  }	
+	
   if(chatter.message === '!discord' || chatter.message.indexOf("discord") != -1 || chatter.message.indexOf("Discord") != -1 || chatter.message.indexOf("Discord?") != -1 || chatter.message.indexOf("discord?") != -1) {
     Bot.say('Join our discord! We got da horses in da back! \n https://discord.gg/khQuZ62')
   }
+
+  if(chatter.username === 'Kamino_Shimobe' || chatter.display_name === 'Kamino_Shimobe') {
+	var chance = Math.floor(Math.random() * 4) + 1;	  
+	  if(chance == 1){
+    		Bot.say('OMG SHUT UP KAMINO >:( >:( >:(!');
+	  }
+  }
+	
+if(chatter.username === 'psytician' || chatter.display_name === 'Psytician') {
+	var chance = Math.floor(Math.random() * 4) + 1;	  
+	  if(chance == 1){
+    		Bot.say('Hi Psy :3');
+	  }
+  }	
 })
 
 const bot = new Discord.Client({disableEveryone: true})
