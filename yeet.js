@@ -10,7 +10,8 @@ const Bot = new TwitchBot({
  
 Bot.on('join', channel => {
   console.log(`Joined channel: ${channel}`)
-  Bot.say('We schleep ^_^ Zzz')	
+  var greeting = ['Running it down mid today bois? :O', 'Welcome to a happy and wholesome stream <3', 'False is gonna DEF get tet dandy this time! >:(', 'Hi hi! It is STREAM time! :D']	
+  Bot.say(greeting[Math.floor(Math.random()*3)]);	
 })
  
 Bot.on('error', err => {
@@ -18,8 +19,8 @@ Bot.on('error', err => {
 })
  
 Bot.on('message', chatter => {
-  if(chatter.message === '!yeet') {
-    Bot.say('YA YEET!')
+  if(chatter.message === '!discord' || chatter.message.indexOf("discord") != -1 || chatter.message.indexOf("Discord") != -1) {
+    Bot.say('Join our discord! We got da horses in da back! \n https://discord.gg/khQuZ62')
   }
 })
 
@@ -114,6 +115,8 @@ bot.on("message", async message => {
 if(command === `${prefix}stream`){
 	message.channel.send("False be streamin here: \n https://m.twitch.tv/falsevibrato8/profile \n GO CHECK HER OUT CUZ")
 }
+	
+
 	
 });	
 
