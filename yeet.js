@@ -32,19 +32,19 @@ Bot.on('message', chatter => {
     Bot.say('Join our discord! We got da horses in da back! \n https://discord.gg/khQuZ62')
   }
 
-  if(chatter.username === 'Kamino_Shimobe' || chatter.display_name === 'Kamino_Shimobe') {
-	var chance = Math.floor(Math.random() * 4) + 1;	  
-	  if(chance == 1){
-    		Bot.say('OMG SHUT UP KAMINO >:( >:( >:(!');
-	  }
-  }
+//   if(chatter.username === 'Kamino_Shimobe' || chatter.display_name === 'Kamino_Shimobe') {
+// 	var chance = Math.floor(Math.random() * 4) + 1;	  
+// 	  if(chance == 1){
+//     		Bot.say('OMG SHUT UP KAMINO >:( >:( >:(!');
+// 	  }
+//   }
 	
-if(chatter.username === 'psytician' || chatter.display_name === 'Psytician') {
-	var chance = Math.floor(Math.random() * 4) + 1;	  
-	  if(chance == 1){
-    		Bot.say('Hi Psy :3');
-	  }
-  }	
+// if(chatter.username === 'psytician' || chatter.display_name === 'Psytician') {
+// 	var chance = Math.floor(Math.random() * 4) + 1;	  
+// 	  if(chance == 1){
+//     		Bot.say('Hi Psy :3');
+// 	  }
+//   }	
 })
 
 const bot = new Discord.Client({disableEveryone: true})
