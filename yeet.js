@@ -24,8 +24,8 @@ Bot.on('error', err => {
  
 Bot.on('message', chatter => {
   if(chatter.message === '!help' || chatter.message.indexOf("help") != -1 || chatter.message.indexOf("Help") != -1) {
-    Bot.say('Contact one of our lovely mods for help with anything!');
-    Bot.say('Except Kamino he a bum :P') 
+    Bot.say('Contact one of our lovely mods for help with anything! \n Except Kamino he a bum :P');
+   
   }	
 	
   if(chatter.message === '!discord' || chatter.message.indexOf("discord") != -1 || chatter.message.indexOf("Discord") != -1 || chatter.message.indexOf("Discord?") != -1 || chatter.message.indexOf("discord?") != -1) {
@@ -35,16 +35,16 @@ Bot.on('message', chatter => {
   if(chatter.username === 'Kamino_Shimobe' || chatter.display_name === 'Kamino_Shimobe') {
 	var chance = Math.floor(Math.random() * 4) + 1;	  
 	  if(chance == 1){
-    		Bot.say('OMG SHUT UP KAMINO >:( >:( >:(!');
+    		Bot.say('OMG SHUT UP KAMINO :( :( :(');
 	  }
   }
 	
-// if(chatter.username === 'psytician' || chatter.display_name === 'Psytician') {
-// 	var chance = Math.floor(Math.random() * 4) + 1;	  
-// 	  if(chance == 1){
-//     		Bot.say('Hi Psy :3');
-// 	  }
-//   }	
+if(chatter.username === 'psytician' || chatter.display_name === 'Psytician') {
+	var chance = Math.floor(Math.random() * 4) + 1;	  
+	  if(chance == 1){
+    		Bot.say('Hi Psy :3');
+	  }
+  }	
 })
 
 const bot = new Discord.Client({disableEveryone: true})
