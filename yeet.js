@@ -24,12 +24,12 @@ Bot.on('error', err => {
  
 Bot.on('message', chatter => {
   if(chatter.message === '!help' || chatter.message.indexOf("help") != -1 || chatter.message.indexOf("Help") != -1) {
-    Bot.say('Contact one of our lovely mods for help with anything! \n Except Kamino he a bum :P');
+    Bot.say('Contact one of our lovely mods for help with anything! Except Kamino he a bum :P');
    
   }	
 	
   if(chatter.message === '!discord' || chatter.message.indexOf("discord") != -1 || chatter.message.indexOf("Discord") != -1 || chatter.message.indexOf("Discord?") != -1 || chatter.message.indexOf("discord?") != -1) {
-    Bot.say('Join our ranch! We got da horses in da back! \n https://discord.gg/khQuZ62')
+    Bot.say('Join our ranch! We got da horses in da back! https://discord.gg/khQuZ62')
   }
 
   if(chatter.username === 'Kamino_Shimobe' || chatter.display_name === 'Kamino_Shimobe') {
@@ -42,7 +42,7 @@ Bot.on('message', chatter => {
 if(chatter.username === 'psytician' || chatter.display_name === 'Psytician') {
 	var chance = Math.floor(Math.random() * 2) + 1;	  
 	  if(chance == 1){
-    		Bot.say('Yo Psy you a BUM');
+    		Bot.say('It is our lovely mod Psy (:');
 	  }
   }	
 })
