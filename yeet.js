@@ -33,14 +33,14 @@ Bot.on('message', chatter => {
   }
 
   if(chatter.username === 'Kamino_Shimobe' || chatter.display_name === 'Kamino_Shimobe') {
-	var chance = Math.floor(Math.random() * 2) + 1;	  
+	var chance = Math.floor(Math.random() * 4) + 1;	  
 	  if(chance == 1){
     		Bot.say('OMG SHUT UP KAMINO :( :( :(');
 	  }
   }
 	
 if(chatter.username === 'psytician' || chatter.display_name === 'Psytician') {
-	var chance = Math.floor(Math.random() * 2) + 1;	  
+	var chance = Math.floor(Math.random() * 4) + 1;	  
 	  if(chance == 1){
     		Bot.say('It is our lovely mod Psy (:');
 	  }
