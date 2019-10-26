@@ -1,5 +1,6 @@
 const Discord = require("discord.js");
 const TwitchBot = require('twitch-bot');
+const mysql = require("mysql");
 const SpotifyWebApi = require('spotify-web-api-node');
 const prefix = "!";
 const mods = new Set();
