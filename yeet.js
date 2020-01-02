@@ -78,14 +78,14 @@ if(chatter.username === 'Kamino_Shimobe' || chatter.display_name === 'Kamino_Shi
 }
 
   if(chatter.username === 'Kamino_Shimobe' || chatter.display_name === 'Kamino_Shimobe') {
-	var chance = Math.floor(Math.random() * 4) + 1;	  
+	var chance = Math.floor(Math.random() * 8) + 1;	  
 	  if(chance == 1){
-    		Bot.say('Kamino kicked me out of the house...');
+    		Bot.say('Kamino is our master coder');
 	  }
   }
 	
 if(chatter.username === 'psytician' || chatter.display_name === 'Psytician') {
-	var chance = Math.floor(Math.random() * 4) + 1;	  
+	var chance = Math.floor(Math.random() * 8) + 1;	  
 	  if(chance == 1){
     		Bot.say('It is our lovely mod Psy (:');
 	  }
