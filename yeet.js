@@ -266,6 +266,7 @@ message.channel.send("Which song would you like to play? respond with (1 - 5) to
             			message.channel.send("Search cancelled.");
             			return;
             		} else if (message.content === "1") { 
+            			console.log(songIds[0]);
             			spotifyApi.addTracksToPlaylist('5pKBnd1hsZXiHHoosznaYs', ["spotify:track:" + songIds[0]])
 						  .then(function(data) {
 						  	message.channel.send('Added '+ songs[0] +' to playlist');
