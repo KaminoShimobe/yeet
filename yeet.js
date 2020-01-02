@@ -14,7 +14,7 @@ const Bot = new TwitchBot({
 })
 
 var spotifyApi = new SpotifyWebApi({
-  clientId: '0fd564583e5c45e5be778d459dae3131',
+  clientId: '43613288d3b448ac9f26b41060e4743a',
   clientSecret: process.env.SPOTIFY,
   redirectUri: process.env.SPOTIFY_URI
 });
