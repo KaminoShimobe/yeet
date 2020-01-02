@@ -257,6 +257,8 @@ spotifyApi.searchTracks(query)
 	var songIds = [data.body.tracks.items[0].id, data.body.tracks.items[1].id, data.body.tracks.items[2].id, data.body.tracks.items[3].id, data.body.tracks.items[4].id]
 
 
+
+
 message.channel.send("Which song would you like to play? respond with (1 - 5) to select or &cancel to cancel.\n 1." + songs[0] + "\n 2." + songs[1] + "\n 3." + songs[2] + "\n 4." + songs[3] + "\n 5." + songs[4])
  const collector = new Discord.MessageCollector(message.channel, m => m.author.id === message.author.id, { time: 100000000 });
         		collector.once('collect', message => {
@@ -264,7 +266,7 @@ message.channel.send("Which song would you like to play? respond with (1 - 5) to
             			message.channel.send("Search cancelled.");
             			return;
             		} else if (message.content === "1") { 
-            			spotifyApi.addTracksToPlaylist('5pKBnd1hsZXiHHoosznaYs', [`spotify:track:${songIds[0]}`])
+            			spotifyApi.addTracksToPlaylist('5pKBnd1hsZXiHHoosznaYs', ["spotify:track:" + songIds[0]])
 						  .then(function(data) {
 						  	message.channel.send('Added '+ songs[0] +' to playlist');
 						    console.log('Added '+ songs[0] +' to playlist!');
