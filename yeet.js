@@ -254,7 +254,7 @@ spotifyApi.searchTracks(query)
     console.log(data.body.tracks.items[0].uri);
 
     var songs = [data.body.tracks.items[0].name, data.body.tracks.items[1].name, data.body.tracks.items[2].name, data.body.tracks.items[3].name, data.body.tracks.items[4].name];
-	var songIds = [data.body.tracks.items[0].id, data.body.tracks.items[1].id, data.body.tracks.items[2].id, data.body.tracks.items[3].id, data.body.tracks.items[4].id]
+	var songIds = [data.body.tracks.items[0].uri, data.body.tracks.items[1].uri, data.body.tracks.items[2].uri, data.body.tracks.items[3].uri, data.body.tracks.items[4].uri]
 
 
 
@@ -267,7 +267,7 @@ message.channel.send("Which song would you like to play? respond with (1 - 5) to
             			return;
             		} else if (message.content === "1") { 
             			console.log(songIds[0]);
-            			spotifyApi.addTracksToPlaylist('5pKBnd1hsZXiHHoosznaYs', ["spotify:track:" + songIds[0]])
+            			spotifyApi.addTracksToPlaylist('5pKBnd1hsZXiHHoosznaYs', [songIds[0]])
 						  .then(function(data) {
 						  	message.channel.send('Added '+ songs[0] +' to playlist');
 						    console.log('Added '+ songs[0] +' to playlist!');
@@ -276,7 +276,7 @@ message.channel.send("Which song would you like to play? respond with (1 - 5) to
 						  });
             			return;
             		}	else if (message.content === "2") { 
-            			spotifyApi.addTracksToPlaylist('5pKBnd1hsZXiHHoosznaYs', [`spotify:track:${songIds[1]}`])
+            			spotifyApi.addTracksToPlaylist('5pKBnd1hsZXiHHoosznaYs', [songIds[1]])
 						  .then(function(data) {
 						  	message.channel.send('Added '+ songs[1] +' to playlist');
 						    console.log('Added '+ songs[1] +' to playlist!');
@@ -285,7 +285,7 @@ message.channel.send("Which song would you like to play? respond with (1 - 5) to
 						  });
             			return;
             		}	else if (message.content === "3") { 
-            			spotifyApi.addTracksToPlaylist('5pKBnd1hsZXiHHoosznaYs', [`spotify:track:${songIds[2]}`])
+            			spotifyApi.addTracksToPlaylist('5pKBnd1hsZXiHHoosznaYs', [songIds[2]])
 						  .then(function(data) {
 						  	message.channel.send('Added '+ songs[2] +' to playlist');
 						    console.log('Added '+ songs[2] +' to playlist!');
@@ -294,7 +294,7 @@ message.channel.send("Which song would you like to play? respond with (1 - 5) to
 						  });
             			return;
             		}	else if (message.content === "4") { 
-            			spotifyApi.addTracksToPlaylist('5pKBnd1hsZXiHHoosznaYs', [`spotify:track:${songIds[3]}`])
+            			spotifyApi.addTracksToPlaylist('5pKBnd1hsZXiHHoosznaYs', [songIds[3]])
 						  .then(function(data) {
 						  	message.channel.send('Added '+ songs[3] +' to playlist');
 						    console.log('Added '+ songs[3] +' to playlist!');
@@ -303,7 +303,7 @@ message.channel.send("Which song would you like to play? respond with (1 - 5) to
 						  });
             			return;
             		}	else if (message.content === "5") { 
-            			spotifyApi.addTracksToPlaylist('5pKBnd1hsZXiHHoosznaYs', [`spotify:track:${songIds[4]}`])
+            			spotifyApi.addTracksToPlaylist('5pKBnd1hsZXiHHoosznaYs', [songIds[4]])
 						  .then(function(data) {
 						  	message.channel.send('Added '+ songs[4] +' to playlist');
 						    console.log('Added '+ songs[4] +' to playlist!');
