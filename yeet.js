@@ -256,6 +256,68 @@ spotifyApi.searchTracks(query)
     console.error(err);
   });
 
+var songs = [data.body.tracks.items[0].name, data.body.tracks.items[1].name, data.body.tracks.items[2].name, data.body.tracks.items[3].name, data.body.tracks.items[4].name];
+var songIds = [data.body.tracks.items[0].id, data.body.tracks.items[1].id, data.body.tracks.items[2].id, data.body.tracks.items[3].id, data.body.tracks.items[4].id]
+
+
+message.channel.send("Which song would you like to play? respond with (1 - 5) to select or &cancel to cancel.")
+ const collector = new Discord.MessageCollector(message.channel, m => m.author.id === potential.id, { time: 100000000 });
+        		collector.once('collect', message => {
+            		if (message.content === "&cancel") { 
+            			message.channel.send("Search cancelled.");
+            			return;
+            		} else if (message.content === "1") { 
+            			spotifyApi.addTracksToPlaylist('5pKBnd1hsZXiHHoosznaYs', [`spotify:track:${songIds[0]}`])
+						  .then(function(data) {
+						  	message.channel.send('Added '+ songs[0] +' to playlist');
+						    console.log('Added '+ songs[0] +' to playlist!');
+						  }, function(err) {
+						    console.log('Something went wrong!', err);
+						  });
+            			return;
+            		}	else if (message.content === "2") { 
+            			spotifyApi.addTracksToPlaylist('5pKBnd1hsZXiHHoosznaYs', [`spotify:track:${songIds[1]}`])
+						  .then(function(data) {
+						  	message.channel.send('Added '+ songs[1] +' to playlist');
+						    console.log('Added '+ songs[1] +' to playlist!');
+						  }, function(err) {
+						    console.log('Something went wrong!', err);
+						  });
+            			return;
+            		}	else if (message.content === "3") { 
+            			spotifyApi.addTracksToPlaylist('5pKBnd1hsZXiHHoosznaYs', [`spotify:track:${songIds[2]}`])
+						  .then(function(data) {
+						  	message.channel.send('Added '+ songs[2] +' to playlist');
+						    console.log('Added '+ songs[2] +' to playlist!');
+						  }, function(err) {
+						    console.log('Something went wrong!', err);
+						  });
+            			return;
+            		}	else if (message.content === "4") { 
+            			spotifyApi.addTracksToPlaylist('5pKBnd1hsZXiHHoosznaYs', [`spotify:track:${songIds[3]}`])
+						  .then(function(data) {
+						  	message.channel.send('Added '+ songs[3] +' to playlist');
+						    console.log('Added '+ songs[3] +' to playlist!');
+						  }, function(err) {
+						    console.log('Something went wrong!', err);
+						  });
+            			return;
+            		}	else if (message.content === "5") { 
+            			spotifyApi.addTracksToPlaylist('5pKBnd1hsZXiHHoosznaYs', [`spotify:track:${songIds[4]}`])
+						  .then(function(data) {
+						  	message.channel.send('Added '+ songs[4] +' to playlist');
+						    console.log('Added '+ songs[4] +' to playlist!');
+						  }, function(err) {
+						    console.log('Something went wrong!', err);
+						  });
+            			return;
+            		}	else {
+            			message.channel.send("Query Cancelled.")
+            			return;
+            		}
+
+            	});
+
 }
 
 //5pKBnd1hsZXiHHoosznaYs
