@@ -234,15 +234,16 @@ if(command === `${prefix}info`){
 }
 
 if(command === `${prefix}playlist`){
-	spotifyApi.getUserPlaylists('Falsey')
+	spotifyApi.getPlaylist('5pKBnd1hsZXiHHoosznaYs')
   .then(function(data) {
-    console.log('Retrieved playlists', data.body);
-  },function(err) {
+    console.log('Some information about this playlist', data.body);
+  }, function(err) {
     console.log('Something went wrong!', err);
   });
 	
 }
 
+//5pKBnd1hsZXiHHoosznaYs
 
 // spotifyApi.addTracksToPlaylist('5ieJqeLJjjI8iJWaxeBLuK', ["spotify:track:4iV5W9uYEdYUVa79Axb7Rh", "spotify:track:1301WleyT98MSxVHPZCA6M"])
 //   .then(function(data) {
