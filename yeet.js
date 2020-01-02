@@ -258,7 +258,7 @@ spotifyApi.searchTracks(query)
 
 
 message.channel.send("Which song would you like to play? respond with (1 - 5) to select or &cancel to cancel.\n 1." + songs[0] + "\n 2." + songs[1] + "\n 3." + songs[2] + "\n 4." + songs[3] + "\n 5." + songs[4])
- const collector = new Discord.MessageCollector(message.channel, m => m.author.id === potential.id, { time: 100000000 });
+ const collector = new Discord.MessageCollector(message.channel, m => m.author.id === message.author.id, { time: 100000000 });
         		collector.once('collect', message => {
             		if (message.content === "&cancel") { 
             			message.channel.send("Search cancelled.");
