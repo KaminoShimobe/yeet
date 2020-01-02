@@ -251,7 +251,7 @@ var query = thing.replace(prefix +"search", "");
 spotifyApi.searchTracks(query)
   .then(function(data) {
     console.log('Search by ' + query + ':', data.body);
-    console.log(data.tracks.items[0]);
+    console.log(data.body.tracks.items[0]);
   }, function(err) {
     console.error(err);
   });
