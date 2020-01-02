@@ -252,12 +252,9 @@ spotifyApi.searchTracks(query)
   .then(function(data) {
     console.log('Search by ' + query + ':', data.body);
     console.log(data.body.tracks.items[0]);
-  }, function(err) {
-    console.error(err);
-  });
 
-var songs = [data.body.tracks.items[0].name, data.body.tracks.items[1].name, data.body.tracks.items[2].name, data.body.tracks.items[3].name, data.body.tracks.items[4].name];
-var songIds = [data.body.tracks.items[0].id, data.body.tracks.items[1].id, data.body.tracks.items[2].id, data.body.tracks.items[3].id, data.body.tracks.items[4].id]
+    var songs = [data.body.tracks.items[0].name, data.body.tracks.items[1].name, data.body.tracks.items[2].name, data.body.tracks.items[3].name, data.body.tracks.items[4].name];
+	var songIds = [data.body.tracks.items[0].id, data.body.tracks.items[1].id, data.body.tracks.items[2].id, data.body.tracks.items[3].id, data.body.tracks.items[4].id]
 
 
 message.channel.send("Which song would you like to play? respond with (1 - 5) to select or &cancel to cancel.")
@@ -317,6 +314,12 @@ message.channel.send("Which song would you like to play? respond with (1 - 5) to
             		}
 
             	});
+
+  }, function(err) {
+    console.error(err);
+  });
+
+
 
 }
 
