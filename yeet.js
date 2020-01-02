@@ -251,13 +251,21 @@ var query = thing.replace(prefix +"search", "");
 spotifyApi.searchTracks(query)
   .then(function(data) {
     console.log('Search by ' + query + ':', data.body);
-    // console.log(data.tracks.items[0])
   }, function(err) {
     console.error(err);
   });
 
 }
 
+//5pKBnd1hsZXiHHoosznaYs
+
+// spotifyApi.addTracksToPlaylist('5pKBnd1hsZXiHHoosznaYs', ["spotify:track:4iV5W9uYEdYUVa79Axb7Rh", "spotify:track:1301WleyT98MSxVHPZCA6M"])
+//   .then(function(data) {
+//     console.log('Added tracks to playlist!');
+//   }, function(err) {
+//     console.log('Something went wrong!', err);
+//   });
+//kl0knbim8wcfrun4jfjekwj1t
 
 
 	
