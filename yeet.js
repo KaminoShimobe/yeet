@@ -16,7 +16,7 @@ const Bot = new TwitchBot({
 var spotifyApi = new SpotifyWebApi({
   clientId: '0fd564583e5c45e5be778d459dae3131',
   clientSecret: process.env.SPOTIFY,
-  redirectUri: 'https://discord.gg/khQuZ62'
+  redirectUri: 'http://localhost:8888/callback/'
 });
  
 Bot.on('join', channel => {
