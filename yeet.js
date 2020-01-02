@@ -223,7 +223,7 @@ if(command === `${prefix}stream`){
 	message.channel.send("False be streamin here: \n https://m.twitch.tv/falsevibrato8/profile \n GO CHECK HER OUT CUZ")
 }
 	
-if(command === `${prefix}playlist`){
+if(command === `${prefix}info`){
 	spotifyApi.getMe()
   	.then(function(data) {
     console.log('Some information about the authenticated user', data.body);
@@ -232,6 +232,18 @@ if(command === `${prefix}playlist`){
   });
 	
 }
+
+if(command === `${prefix}playlist`){
+	spotifyApi.getPlaylist('kl0knbim8wcfrun4jfjekwj1t')
+  .then(function(data) {
+    console.log('Some information about this playlist', data.body);
+  }, function(err) {
+    console.log('Something went wrong!', err);
+  });
+	
+}
+
+//kl0knbim8wcfrun4jfjekwj1t
 
 
 	
