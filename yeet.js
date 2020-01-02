@@ -2,7 +2,7 @@ const Discord = require("discord.js");
 const TwitchBot = require('twitch-bot');
 const mysql = require("mysql");
 const SpotifyWebApi = require('spotify-web-api-node');
-const prefix = "!";
+const prefix = "&";
 const mods = new Set();
 const subs = new Set();
 const followers = new Set();
@@ -140,7 +140,7 @@ bot.on("ready", async () => {
 
 	console.log(`${bot.user.username} is ready!`);
 	
-	bot.user.setPresence({ status: 'online', game: { name: '!stream' } });
+	bot.user.setPresence({ status: 'online', game: { name: '&stream' } });
 
 	
 
@@ -234,15 +234,22 @@ if(command === `${prefix}info`){
 }
 
 if(command === `${prefix}playlist`){
-	spotifyApi.getPlaylist('kl0knbim8wcfrun4jfjekwj1t')
+	spotifyApi.getUserPlaylists('Falsey')
   .then(function(data) {
-    console.log('Some information about this playlist', data.body);
-  }, function(err) {
+    console.log('Retrieved playlists', data.body);
+  },function(err) {
     console.log('Something went wrong!', err);
   });
 	
 }
 
+
+// spotifyApi.addTracksToPlaylist('5ieJqeLJjjI8iJWaxeBLuK', ["spotify:track:4iV5W9uYEdYUVa79Axb7Rh", "spotify:track:1301WleyT98MSxVHPZCA6M"])
+//   .then(function(data) {
+//     console.log('Added tracks to playlist!');
+//   }, function(err) {
+//     console.log('Something went wrong!', err);
+//   });
 //kl0knbim8wcfrun4jfjekwj1t
 
 
