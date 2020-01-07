@@ -159,10 +159,17 @@ if(chatter.username === 'Kamino_Shimobe' || chatter.display_name === 'Kamino_Shi
 	  }
   }
 	
-if(chatter.username === 'psytician' || chatter.display_name === 'Psytician') {
+if(chatter.username === 'Psytician' || chatter.display_name === 'Psytician') {
 	var chance = Math.floor(Math.random() * 8) + 1;	  
 	  if(chance == 1){
     		Bot.say('It is our lovely mod Psy (:');
+	  }
+  }	
+
+  if(chatter.username === 'ExcessiveTv' || chatter.display_name === 'ExcessiveTv') {
+	var chance = Math.floor(Math.random() * 8) + 1;	  
+	  if(chance == 1){
+    		Bot.say('Suck my ass like a chicken wing');
 	  }
   }	
 })
@@ -253,7 +260,7 @@ bot.on("message", async message => {
 //     	message.author.send("Table Spotify created!");
 //   	});
 	
-		var sql = "CREATE TABLE stream (greeting VARCHAR(300)))";
+		var sql = "CREATE TABLE stream (greeting VARCHAR(300))";
 		
 		
 		con.query(sql, function (err, result) {
