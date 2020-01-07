@@ -252,7 +252,7 @@ bot.on("message", async message => {
 
 	if(command === `${prefix}table`){
 	if(message.author.id == '242118931769196544'){
-		var sql = "CREATE TABLE spotify (id VARCHAR(30) accept BOOLEAN)";
+		var sql = "CREATE TABLE spotify (id VARCHAR(30), accept BOOLEAN)";
 		
 		
 		con.query(sql, function (err, result) {
@@ -260,7 +260,7 @@ bot.on("message", async message => {
     	message.author.send("Table Spotify created!");
   	});
 	
-		var sql2 = "CREATE TABLE stream (id VARCHAR(30) greeting VARCHAR(300))";
+		var sql2 = "CREATE TABLE stream (id VARCHAR(30), greeting VARCHAR(300))";
 		
 		
 		con.query(sql2, function (err, result) {
