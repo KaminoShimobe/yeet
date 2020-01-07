@@ -44,24 +44,6 @@ var code = 'AQBSx6dkHTSEWTa25Dw1sJIuwIo3IsOqugtUCZ7wdH2PPMRjYn_G596T6yqVWCOrPYZV
 	
 // }
 
-spotifyApi.authorizationCodeGrant(code).then(
-  function(data) {
-    console.log('The token expires in ' + data.body['expires_in']);
-    console.log('The access token is ' + data.body['access_token']);
-    console.log('The refresh token is ' + data.body['refresh_token']);
- 
-    // Set the access token on the API object to use it in later calls
-    spotifyApi.setAccessToken(data.body['access_token']);
-    spotifyApi.setRefreshToken(data.body['refresh_token']);
-	  
-	 setTimeout(resetToken, data.body['expires_in'])
-  },
-  function(err) {
-    console.log('Something went wrong!', err);
-  }
-);
-
-
 spotifyApi.refreshAccessToken().then(
   function(data) {
     console.log('The access token has been refreshed!');
@@ -73,6 +55,26 @@ spotifyApi.refreshAccessToken().then(
     console.log('Could not refresh access token', err);
   }
 );
+
+spotifyApi.authorizationCodeGrant(code).then(
+  function(data) {
+    console.log('The token expires in ' + data.body['expires_in']);
+    console.log('The access token is ' + data.body['access_token']);
+    console.log('The refresh token is ' + data.body['refresh_token']);
+ 
+    // Set the access token on the API object to use it in later calls
+    spotifyApi.setAccessToken(data.body['access_token']);
+    spotifyApi.setRefreshToken(data.body['refresh_token']);
+	  
+	 
+  },
+  function(err) {
+    console.log('Something went wrong!', err);
+  }
+);
+
+
+
  
 Bot.on('join', channel => {
   console.log(`Joined channel: ${channel}`)
