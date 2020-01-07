@@ -42,20 +42,20 @@ spotifyApi.clientCredentialsGrant().then(
     console.log('The access token is ' + data.body['access_token']);
  
     // Save the access token so that it's used in future calls
-    spotifyApi.setAccessToken(data.body['access_token']);
+    spotifyApi.setCredentials({
+  accessToken: data.body['access_token'],
+  refreshToken: data.body['refresh_token'],
+  redirectUri: process.env.SPOTIFY_URI,
+  'clientId ': '43613288d3b448ac9f26b41060e4743a',
+  clientSecret: process.env.SPOTIFY
+	});
   },
   function(err) {
     console.log('Something went wrong when retrieving an access token', err);
   }
 );
 
-spotifyApi.setCredentials({
-  accessToken: data.body['access_token'],
-  refreshToken: data.body['refresh_token'],
-  redirectUri: process.env.SPOTIFY_URI,
-  'clientId ': '43613288d3b448ac9f26b41060e4743a',
-  clientSecret: process.env.SPOTIFY
-});
+
 
 console.log('The credentials are ' + spotifyApi.getCredentials());
  
@@ -305,6 +305,13 @@ message.channel.send("Which song would you like to play? respond with (1 - 5) to
             			return;
             		} else if (message.content === "1") { 
             			console.log(songIds[0]);
+
+            			spotifyApi.addTracksToPlaylist('5ieJqeLJjjI8iJWaxeBLuK', ["spotify:track:4iV5W9uYEdYUVa79Axb7Rh", "spotify:track:1301WleyT98MSxVHPZCA6M"])
+						  .then(function(data) {
+						    console.log('Added tracks to playlist!');
+						  }, function(err) {
+						    console.log('Something went wrong!', err);
+						  });
 
             			spotifyApi.addTracksToPlaylist('5pKBnd1hsZXiHHoosznaYs', [songIds[0]])
 						  .then(function(data) {
