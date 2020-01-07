@@ -44,17 +44,7 @@ var code = 'AQBSx6dkHTSEWTa25Dw1sJIuwIo3IsOqugtUCZ7wdH2PPMRjYn_G596T6yqVWCOrPYZV
 	
 // }
 
-spotifyApi.refreshAccessToken().then(
-  function(data) {
-    console.log('The access token has been refreshed!');
- 
-    // Save the access token so that it's used in future calls
-    spotifyApi.setAccessToken(data.body['access_token']);
-  },
-  function(err) {
-    console.log('Could not refresh access token', err);
-  }
-);
+
 
 spotifyApi.authorizationCodeGrant(code).then(
   function(data) {
@@ -73,6 +63,17 @@ spotifyApi.authorizationCodeGrant(code).then(
   }
 );
 
+spotifyApi.refreshAccessToken().then(
+  function(data) {
+    console.log('The access token has been refreshed!');
+ 
+    // Save the access token so that it's used in future calls
+    spotifyApi.setAccessToken(data.body['access_token']);
+  },
+  function(err) {
+    console.log('Could not refresh access token', err);
+  }
+);
 
 
  
