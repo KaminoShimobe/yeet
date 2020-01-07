@@ -252,18 +252,41 @@ bot.on("message", async message => {
 
 	if(command === `${prefix}table`){
 	if(message.author.id == '242118931769196544'){
-// 		var sql = "CREATE TABLE spotify (accept BOOLEAN)";
-		
-		
-// 		con.query(sql, function (err, result) {
-//     	if (err) throw err;
-//     	message.author.send("Table Spotify created!");
-//   	});
-	
-		var sql = "CREATE TABLE stream (greeting VARCHAR(300))";
+		var sql = "CREATE TABLE spotify (id VARCHAR(30) accept BOOLEAN,)";
 		
 		
 		con.query(sql, function (err, result) {
+    	if (err) throw err;
+    	message.author.send("Table Spotify created!");
+  	});
+	
+		var sql2 = "CREATE TABLE stream (id VARCHAR(30) greeting VARCHAR(300))";
+		
+		
+		con.query(sql2, function (err, result) {
+    	if (err) throw err;
+    	message.author.send("Table stream created!");
+  	});
+		
+
+	
+}
+	}	
+
+	if(command === `${prefix}drop`){
+	if(message.author.id == '242118931769196544'){
+		var sql = "DROP TABLE spotify";
+		
+		
+		con.query(sql, function (err, result) {
+    	if (err) throw err;
+    	message.author.send("Table Spotify created!");
+  	});
+	
+		var sql2 = "DROP TABLE stream"
+		
+		
+		con.query(sql2, function (err, result) {
     	if (err) throw err;
     	message.author.send("Table stream created!");
   	});
@@ -281,7 +304,7 @@ bot.on("message", async message => {
 		let accept = rows[0].accept;
 
 		if(rows.length < 1) {
-			sql = `INSERT INTO spotify (accept) VALUES (${true})`;
+			sql = `INSERT INTO spotify (id, accept) VALUES ('steelBarnBot', ${true})`;
 			con.query(sql, console.log);
 			message.channel.send(`Accepting spotify requests!`)
 			return;
@@ -320,7 +343,7 @@ bot.on("message", async message => {
             			return;
             		} else {
 				var greet = message.context
-            			sql = `INSERT INTO stream (greeting) VALUES ('${greet}')`;
+            			sql = `INSERT INTO stream (id, greeting) VALUES ('steelBarnBot', '${greet}')`;
 				con.query(sql, console.log);
 				return;
             		}
