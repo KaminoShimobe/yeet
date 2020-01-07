@@ -28,6 +28,22 @@ console.log(authorizeURL);
 
 var code = 'AQBSx6dkHTSEWTa25Dw1sJIuwIo3IsOqugtUCZ7wdH2PPMRjYn_G596T6yqVWCOrPYZVIBWkd4czPxaLzBEyDGmrkRM4TMSThnPCw9Dwb4ZKq-5O19ql7vQ56yErwRr-5tQ1h3P6Tl9Gz2zIMbGntBkmDYG-_anpLgv15X7wRW_jbBojTxLiHlikA92itnvv8pIxT9TdGGJziKVXNc1T07MPzpMkDwQ1W-fmX582cE3g7rC6Gc0SjBwLNaaHzcvEnx6AWp4'
 
+// function resetToken(){
+
+// spotifyApi.refreshAccessToken().then(
+//   function(data) {
+//     console.log('The access token has been refreshed!');
+ 
+//     // Save the access token so that it's used in future calls
+//     spotifyApi.setAccessToken(data.body['access_token']);
+//   },
+//   function(err) {
+//     console.log('Could not refresh access token', err);
+//   }
+// );
+	
+// }
+
 spotifyApi.authorizationCodeGrant(code).then(
   function(data) {
     console.log('The token expires in ' + data.body['expires_in']);
@@ -37,16 +53,53 @@ spotifyApi.authorizationCodeGrant(code).then(
     // Set the access token on the API object to use it in later calls
     spotifyApi.setAccessToken(data.body['access_token']);
     spotifyApi.setRefreshToken(data.body['refresh_token']);
+	  
+	 setTimeout(resetToken, data.body['expires_in'])
   },
   function(err) {
     console.log('Something went wrong!', err);
   }
 );
+
+
+spotifyApi.refreshAccessToken().then(
+  function(data) {
+    console.log('The access token has been refreshed!');
+ 
+    // Save the access token so that it's used in future calls
+    spotifyApi.setAccessToken(data.body['access_token']);
+  },
+  function(err) {
+    console.log('Could not refresh access token', err);
+  }
+);
  
 Bot.on('join', channel => {
   console.log(`Joined channel: ${channel}`)
-  var greeting = ['Running it down mid today bois? :O', 'Welcome to a happy and wholesome stream <3', 'False is gonna DEF get tet dandy this time! >:(', 'Hi hi! It is STREAM time! :D']	
-  Bot.say(greeting[Math.floor(Math.random()*3)]);
+	
+ con.query(`SELECT * FROM stream WHERE id = 'steelBarnBot'`, (err, rows) => {
+		if(err) throw err;
+		let sql;
+		let thisGreeting = rows[0].greeting;
+		
+		
+		
+		if(rows.length < 1) {
+			  Bot.say("Welcome to False Vibrato's Stream!! <3");
+
+		} else {
+			
+			Bot.say(thisGreeting);
+		
+}
+	});			
+   	
+
+
+	
+	
+//   var greeting = ['Running it down mid today bois? :O', 'Welcome to a happy and wholesome stream <3', 'False is gonna DEF get tet dandy this time! >:(', 'Hi hi! It is STREAM time! :D']	
+//   Bot.say(greeting[Math.floor(Math.random()*3)]);
  	
 })
  
@@ -77,7 +130,7 @@ if(chatter.username === 'Kamino_Shimobe' || chatter.display_name === 'Kamino_Shi
 		let accept = rows[0].accept;
 
 		if(rows.length < 1) {
-			sql = `INSERT INTO user (accept) VALUES (${true})`;
+			sql = `INSERT INTO spotify (accept) VALUES (${true})`;
 			con.query(sql, console.log);
 			Bot.say(`Accepting spotify requests!`);
 			return;
@@ -192,14 +245,21 @@ bot.on("message", async message => {
 
 	if(command === `${prefix}table`){
 	if(message.author.id == '242118931769196544'){
-		var sql = "CREATE TABLE spotify (accept BOOLEAN)";
+// 		var sql = "CREATE TABLE spotify (accept BOOLEAN)";
+		
+		
+// 		con.query(sql, function (err, result) {
+//     	if (err) throw err;
+//     	message.author.send("Table Spotify created!");
+//   	});
+	
+		var sql = "CREATE TABLE stream (greeting VARCHAR(300)))";
 		
 		
 		con.query(sql, function (err, result) {
     	if (err) throw err;
-    	message.author.send("Table Spotify created!");
+    	message.author.send("Table stream created!");
   	});
-	
 		
 
 	
@@ -214,7 +274,7 @@ bot.on("message", async message => {
 		let accept = rows[0].accept;
 
 		if(rows.length < 1) {
-			sql = `INSERT INTO user (accept) VALUES (${true})`;
+			sql = `INSERT INTO spotify (accept) VALUES (${true})`;
 			con.query(sql, console.log);
 			message.channel.send(`Accepting spotify requests!`)
 			return;
@@ -234,6 +294,56 @@ bot.on("message", async message => {
 
 		});	
 	}
+	
+	if(command === `${prefix}greet`){
+		con.query(`SELECT * FROM stream WHERE id = 'steelBarnBot'`, (err, rows) => {
+		if(err) throw err;
+		let sql;
+
+		let greeting = rows[0].greeting;
+			
+
+		if(rows.length < 1) {
+			
+			message.channel.send(`You have no greeting, what would you like it to be? ${prefix}cancel to cancel.`);
+			 const collector = new Discord.MessageCollector(message.channel, m => m.author.id === message.author.id, { time: 100000000 });
+        		collector.once('collect', message => {
+            		if (message.content === "&cancel") { 
+            			message.channel.send("Search cancelled.");
+            			return;
+            		} else {
+				var greet = message.context
+            			sql = `INSERT INTO stream (greeting) VALUES ('${greet}')`;
+				con.query(sql, console.log);
+				return;
+            		}
+			});	
+				
+			
+			
+			
+		} else {
+			
+			message.channel.send(`Your current greeting is \n **${greeting}** \n, what would you like it to be? ${prefix}cancel to cancel.`);
+			 const collector = new Discord.MessageCollector(message.channel, m => m.author.id === message.author.id, { time: 100000000 });
+        		collector.once('collect', message => {
+            		if (message.content === "&cancel") { 
+            			message.channel.send("Search cancelled.");
+            			return;
+            		} else {
+				var greet = message.context;
+				sql = `UPDATE stream SET greeting = '${greet}' WHERE id = 'steelBarnBot'`;
+				con.query(sql, console.log);
+				return;
+            		}
+			});	
+		}
+
+
+		});	
+	}
+	
+	
 
 
 		
@@ -287,8 +397,7 @@ message.channel.send("Which song would you like to play? respond with (1 - 5) to
             		if (message.content === "&cancel") { 
             			message.channel.send("Search cancelled.");
             			return;
-            		} else if (message.content === "1") { 
-            			console.log(songIds[0]);
+            		} else if (message.content === "1") {
 
             			spotifyApi.addTracksToPlaylist('5pKBnd1hsZXiHHoosznaYs', [songIds[0]])
 						  .then(function(data) {
