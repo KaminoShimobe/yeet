@@ -13,13 +13,51 @@ const Bot = new TwitchBot({
   channels: ['falsevibrato8']
 })
 
+var scopes = ['playlist-modify-public'],
+state = 'illinois';
+
 var spotifyApi = new SpotifyWebApi({
   clientId: '43613288d3b448ac9f26b41060e4743a',
   clientSecret: process.env.SPOTIFY,
   redirectUri: process.env.SPOTIFY_URI
 });
 
-spotifyApi.setAccessToken(process.env.SPOTIFY_TOKEN);
+var authorizeURL = spotifyApi.createAuthorizeURL(scopes, state);
+
+spotifyApi.refreshAccessToken().then(
+  function(data) {
+    console.log('The access token has been refreshed!');
+ 
+    // Save the access token so that it's used in future calls
+    spotifyApi.setAccessToken(data.body['access_token']);
+  },
+  function(err) {
+    console.log('Could not refresh access token', err);
+  }
+);
+
+spotifyApi.clientCredentialsGrant().then(
+  function(data) {
+    console.log('The access token expires in ' + data.body['expires_in']);
+    console.log('The access token is ' + data.body['access_token']);
+ 
+    // Save the access token so that it's used in future calls
+    spotifyApi.setAccessToken(data.body['access_token']);
+  },
+  function(err) {
+    console.log('Something went wrong when retrieving an access token', err);
+  }
+);
+
+spotifyApi.setCredentials({
+  accessToken: data.body['access_token'],
+  refreshToken: data.body['refresh_token'],
+  redirectUri: process.env.SPOTIFY_URI,
+  'clientId ': '43613288d3b448ac9f26b41060e4743a',
+  clientSecret: process.env.SPOTIFY
+});
+
+console.log('The credentials are ' + spotifyApi.getCredentials());
  
 Bot.on('join', channel => {
   console.log(`Joined channel: ${channel}`)
@@ -267,6 +305,7 @@ message.channel.send("Which song would you like to play? respond with (1 - 5) to
             			return;
             		} else if (message.content === "1") { 
             			console.log(songIds[0]);
+
             			spotifyApi.addTracksToPlaylist('5pKBnd1hsZXiHHoosznaYs', [songIds[0]])
 						  .then(function(data) {
 						  	message.channel.send('Added '+ songs[0] +' to playlist');
