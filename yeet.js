@@ -306,13 +306,6 @@ message.channel.send("Which song would you like to play? respond with (1 - 5) to
             		} else if (message.content === "1") { 
             			console.log(songIds[0]);
 
-            			spotifyApi.addTracksToPlaylist('5ieJqeLJjjI8iJWaxeBLuK', ["spotify:track:4iV5W9uYEdYUVa79Axb7Rh", "spotify:track:1301WleyT98MSxVHPZCA6M"])
-						  .then(function(data) {
-						    console.log('Added tracks to playlist!');
-						  }, function(err) {
-						    console.log('Something went wrong!', err);
-						  });
-
             			spotifyApi.addTracksToPlaylist('5pKBnd1hsZXiHHoosznaYs', [songIds[0]])
 						  .then(function(data) {
 						  	message.channel.send('Added '+ songs[0] +' to playlist');
