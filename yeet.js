@@ -14,7 +14,7 @@ const Bot = new TwitchBot({
 })
 
 var scopes = ['playlist-modify-public'],
-state = 'illinois';
+state = '34fFs29kd09';
 
 var spotifyApi = new SpotifyWebApi({
   clientId: '43613288d3b448ac9f26b41060e4743a',
