@@ -22,44 +22,11 @@ var spotifyApi = new SpotifyWebApi({
   redirectUri: process.env.SPOTIFY_URI
 });
 
+
 var authorizeURL = spotifyApi.createAuthorizeURL(scopes, state);
-
-spotifyApi.refreshAccessToken().then(
-  function(data) {
-    console.log('The access token has been refreshed!');
  
-    // Save the access token so that it's used in future calls
-    spotifyApi.setAccessToken(data.body['access_token']);
-  },
-  function(err) {
-    console.log('Could not refresh access token', err);
-  }
-);
+console.log(authorizeURL);
 
-spotifyApi.clientCredentialsGrant().then(
-  function(data) {
-    console.log('The access token expires in ' + data.body['expires_in']);
-    console.log('The access token is ' + data.body['access_token']);
-    console.log('The refresh token is ' + data.body);
- 
- 
-    // Save the access token so that it's used in future calls
-    spotifyApi.setCredentials({
-  accessToken: data.body['access_token'],
-  refreshToken: data.body['refresh_token'],
-  redirectUri: process.env.SPOTIFY_URI,
-  'clientId ': '43613288d3b448ac9f26b41060e4743a',
-  clientSecret: process.env.SPOTIFY
-	});
-  },
-  function(err) {
-    console.log('Something went wrong when retrieving an access token', err);
-  }
-);
-
-
-
-console.log('The credentials are ' + spotifyApi.getCredentials());
  
 Bot.on('join', channel => {
   console.log(`Joined channel: ${channel}`)
