@@ -346,12 +346,12 @@ bot.on("message", async message => {
 			message.channel.send(`You have no greeting, what would you like it to be? ${prefix}cancel to cancel.`);
 			 const collector = new Discord.MessageCollector(message.channel, m => m.author.id === message.author.id, { time: 100000000 });
         		collector.once('collect', message => {
-            		if (message.content == "&cancel") { 
+            		if (message.content == '&cancel') { 
             			message.channel.send("Greeting cancelled.");
             			return;
             		} else {
 				
-            			sql = `INSERT INTO stream (id, greeting) VALUES ('steelBarnBot', '${message.context}')`;
+            			sql = `INSERT INTO stream (id, greeting) VALUES ('steelBarnBot', '${message.content}')`;
 				con.query(sql, console.log);
 				message.channel.send("Greeting updated to: \n **" + message.context + "**");
 				return;
@@ -367,11 +367,11 @@ bot.on("message", async message => {
 			message.channel.send(`Your current greeting is \n **${greetings}** \n, what would you like it to be? ${prefix}cancel to cancel.`);
 			 const collector = new Discord.MessageCollector(message.channel, m => m.author.id === message.author.id, { time: 100000000 });
         		collector.once('collect', message => {
-            		if (message.content == "&cancel") { 
+            		if (message.content == '&cancel') { 
             			message.channel.send("Greeting cancelled.");
             			return;
             		} else {
-				sql = `UPDATE stream SET greeting = '${message.context}' WHERE id = 'steelBarnBot'`;
+				sql = `UPDATE stream SET greeting = '${message.content}' WHERE id = 'steelBarnBot'`;
 				con.query(sql, console.log);
 				message.channel.send("Greeting updated to: \n **" + message.context + "**");
 				return;
