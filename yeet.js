@@ -353,7 +353,7 @@ bot.on("message", async message => {
 				
             			sql = `INSERT INTO stream (id, greeting) VALUES ('steelBarnBot', '${message.content}')`;
 				con.query(sql, console.log);
-				message.channel.send("Greeting updated to: \n **" + message.context + "**");
+				message.channel.send("Greeting updated to: \n **" + message.content + "**");
 				return;
             		}
 			});	
@@ -373,7 +373,7 @@ bot.on("message", async message => {
             		} else {
 				sql = `UPDATE stream SET greeting = '${message.content}' WHERE id = 'steelBarnBot'`;
 				con.query(sql, console.log);
-				message.channel.send("Greeting updated to: \n **" + message.context + "**");
+				message.channel.send("Greeting updated to: \n **" + message.content + "**");
 				return;
             		}
 			});	
