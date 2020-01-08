@@ -91,8 +91,11 @@ Bot.on('join', channel => {
 			  Bot.say("Welcome to False Vibrato's Stream!! <3");
 
 		} else {
-			
+			if(thisGreeting == undefined){
+			  Bot.say("Welcome to False Vibrato's Stream!! <3");	
+			}	else {
 			Bot.say(thisGreeting);
+			}	
 		
 }
 	});			
@@ -303,15 +306,17 @@ bot.on("message", async message => {
 		con.query(`SELECT * FROM spotify WHERE id = 'steelBarnBot'`, (err, rows) => {
 		if(err) throw err;
 		let sql;
-
-		let accept = rows[0].accept;
-
+		
 		if(rows.length < 1) {
 			sql = `INSERT INTO spotify (id, accept) VALUES ('steelBarnBot', ${true})`;
 			con.query(sql, console.log);
 			message.channel.send(`Accepting spotify requests!`)
 			return;
-		} else {
+		} 	
+			
+		let accept = rows[0].accept;
+
+		
 			if(accept == true){
 				sql = `UPDATE spotify SET accept = ${false} WHERE id = 'steelBarnBot'`;
 				con.query(sql, console.log);
@@ -322,7 +327,7 @@ bot.on("message", async message => {
 				message.channel.send(`Accepting spotify requests!`);
 			}
 
-		}
+		
 
 
 		});	
@@ -333,7 +338,7 @@ bot.on("message", async message => {
 		if(err) throw err;
 		let sql;
 
-		let greeting = rows[0].greeting;
+		
 			
 
 		if(rows.length < 1) {
@@ -356,7 +361,7 @@ bot.on("message", async message => {
 			
 			
 		} else {
-			
+			let greeting = rows[0].greeting;
 			message.channel.send(`Your current greeting is \n **${greeting}** \n, what would you like it to be? ${prefix}cancel to cancel.`);
 			 const collector = new Discord.MessageCollector(message.channel, m => m.author.id === message.author.id, { time: 100000000 });
         		collector.once('collect', message => {
