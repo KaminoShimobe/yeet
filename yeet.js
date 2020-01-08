@@ -347,11 +347,11 @@ bot.on("message", async message => {
 			 const collector = new Discord.MessageCollector(message.channel, m => m.author.id === message.author.id, { time: 100000000 });
         		collector.once('collect', message => {
             		if (message.content === "&cancel") { 
-            			message.channel.send("Search cancelled.");
+            			message.channel.send("Greeting cancelled.");
             			return;
             		} else {
-				var greet = message.context
-            			sql = `INSERT INTO stream (id, greeting) VALUES ('steelBarnBot', '${greet}')`;
+				
+            			sql = `INSERT INTO stream (id, greeting) VALUES ('steelBarnBot', '${message.context}')`;
 				con.query(sql, console.log);
 				return;
             		}
@@ -366,11 +366,11 @@ bot.on("message", async message => {
 			 const collector = new Discord.MessageCollector(message.channel, m => m.author.id === message.author.id, { time: 100000000 });
         		collector.once('collect', message => {
             		if (message.content === "&cancel") { 
-            			message.channel.send("Search cancelled.");
+            			message.channel.send("Greeting cancelled.");
             			return;
             		} else {
 				var greet = message.context;
-				sql = `UPDATE stream SET greeting = '${greet}' WHERE id = 'steelBarnBot'`;
+				sql = `UPDATE stream SET greeting = '${message.context}' WHERE id = 'steelBarnBot'`;
 				con.query(sql, console.log);
 				return;
             		}
