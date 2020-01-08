@@ -160,32 +160,39 @@ if(chatter.username === 'Kamino_Shimobe' || chatter.display_name === 'Kamino_Shi
 
 let twitchArray = chatter.message.split(" ");
 
-// if(twitchArray[0] === '!search'){
-// 		con.query(`SELECT * FROM spotify WHERE id = 'steelBarnBot'`, (err, rows) => {
-// 		if(err) throw err;
-// 		let sql;
+if(twitchArray[0] === '!play' && twitchArray[1] != undefined){
+		con.query(`SELECT * FROM spotify WHERE id = 'steelBarnBot'`, (err, rows) => {
+		if(err) throw err;
+		let sql;
 
-// 		let accept = rows[0].accept;
+		let accept = rows[0].accept;
+		var song = twitchArray[1].replace("https://open.spotify.com/track/", "");
 
-// 		if(rows.length < 1) {
-// 			sql = `INSERT INTO spotify (accept) VALUES (${true})`;
-// 			con.query(sql, console.log);
-// 			Bot.say(`Try searching again!`);
-// 			return;
-// 		} else {
-// 			if(accept == true){
+		if(rows.length < 1) {
+			sql = `INSERT INTO spotify (accept) VALUES (${true})`;
+			con.query(sql, console.log);
+			Bot.say(`Try searching again!`);
+			return;
+		} else {
+			if(accept == true){
+				spotifyApi.addTracksToPlaylist('5pKBnd1hsZXiHHoosznaYs', ['spotify:track:' + song])
+						  .then(function(data) {
+						  	Bot.say('Added to playlist!');
+						    console.log('Added to playlist!');
+						  }, function(err) {
+						    console.log('Something went wrong!', err);
+						  });
 				
-// 				Bot.say(`Not accepting spotify requests!`);
-// 			} else if(accept == false){
+			} else if(accept == false){
 				
-// 				Bot.say(`Accepting spotify requests!`);
-// 			}
+				Bot.say(`Not accepting spotify requests!`);
+			}
 
-// 		}
+		}
 
 
-// 		});	
-// 	}
+		});	
+	}
 
   if(chatter.username === 'Kamino_Shimobe' || chatter.display_name === 'Kamino_Shimobe') {
 	var chance = Math.floor(Math.random() * 8) + 1;	  
