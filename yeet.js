@@ -29,20 +29,20 @@ console.log(authorizeURL);
 var code = 'AQDOY-aW1NTk7ZlWc6_jb4KKFO8Q80Y60w7ZeZOknj32DiBK_hCa9omQUB7IRNwDHqPFITeqR_3Bx-qB-oYuxlADM4leREMp4dul8dvdYJnoVoCZ5g-V27nScsYFMPwoDKRpD9f9xPO31q816iQ_1Aus9ylh04qj1bIoQj4fYvUwvKmDSe23k0xjwfyWTZNS183SQtE1ArwFPeRh-B-gnwT0I9ShnZq2I6ISNMzF32535dF6mwOPkTF_wnh0KJWC9llCJfg&state=34fFs29kd09'
 
 
-function refresh(){
-spotifyApi.refreshAccessToken().then(
-  function(data) {
-    console.log('The access token has been refreshed!');
+// function refresh(){
+// spotifyApi.refreshAccessToken().then(
+//   function(data) {
+//     console.log('The access token has been refreshed!');
  
-    // Save the access token so that it's used in future calls
-    spotifyApi.setAccessToken(data.body['access_token']);
-  },
-  function(err) {
-    console.log('Could not refresh access token', err);
-  }
-);
-setTimeout(refresh(), 2000)
-}
+//     // Save the access token so that it's used in future calls
+//     spotifyApi.setAccessToken(data.body['access_token']);
+//   },
+//   function(err) {
+//     console.log('Could not refresh access token', err);
+//   }
+// );
+// setTimeout(refresh(), 2000)
+// }
 
 
 spotifyApi.authorizationCodeGrant(code).then(
@@ -62,7 +62,7 @@ spotifyApi.authorizationCodeGrant(code).then(
   }
 );
 
-refresh();
+// refresh();
 
 
 
