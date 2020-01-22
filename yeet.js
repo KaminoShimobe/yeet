@@ -26,7 +26,7 @@ var authorizeURL = spotifyApi.createAuthorizeURL(scopes, state);
  
 console.log(authorizeURL);
 
-var code = 'AQDOY-aW1NTk7ZlWc6_jb4KKFO8Q80Y60w7ZeZOknj32DiBK_hCa9omQUB7IRNwDHqPFITeqR_3Bx-qB-oYuxlADM4leREMp4dul8dvdYJnoVoCZ5g-V27nScsYFMPwoDKRpD9f9xPO31q816iQ_1Aus9ylh04qj1bIoQj4fYvUwvKmDSe23k0xjwfyWTZNS183SQtE1ArwFPeRh-B-gnwT0I9ShnZq2I6ISNMzF32535dF6mwOPkTF_wnh0KJWC9llCJfg&state=34fFs29kd09'
+var code = 'AQCTz0cz3_FGwojc4EA9dEKTRTeWiZeNthHh7Gt99CJZ2qSddzO252GFTzIMe7y-q8TYUYD0lJRum6LpATEwUQJyVGFT01nDtGireEfn7W3DrkxO0ZTA2O7pbd5BAXS8vwLsRh15gyqVFCgNZOPPcOoN7SwcNjwzUBpTTSfp36IzjIX8EtbnFEB9hhCZOQu6RTItwrv0ofKO8YVBRK1757zyIc0Q-P-cOppd2uEKzlEx_wK6cbpminOp_0DStIMX1Jbk_2M'
 
 
 // function refresh(){
