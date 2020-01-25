@@ -184,21 +184,21 @@ if(twitchArray[0] === '!play' && twitchArray[1] != undefined){
 	}
 
   if(chatter.username === 'Kamino_Shimobe' || chatter.display_name === 'Kamino_Shimobe') {
-	var chance = Math.floor(Math.random() * 8) + 1;	  
+	var chance = Math.floor(Math.random() * 25) + 1;	  
 	  if(chance == 1){
     		Bot.say('Kamino is our master coder');
 	  }
   }
 	
 if(chatter.username === 'Psytician' || chatter.display_name === 'Psytician') {
-	var chance = Math.floor(Math.random() * 8) + 1;	  
+	var chance = Math.floor(Math.random() * 25) + 1;	  
 	  if(chance == 1){
     		Bot.say('It is our lovely mod Psy (:');
 	  }
   }	
 
   if(chatter.username === 'ExcessiveTv' || chatter.display_name === 'ExcessiveTv') {
-	var chance = Math.floor(Math.random() * 8) + 1;	  
+	var chance = Math.floor(Math.random() * 25) + 1;	  
 	  if(chance == 1){
     		Bot.say('Suck my ass like a chicken wing');
 	  }
