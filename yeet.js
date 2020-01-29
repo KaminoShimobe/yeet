@@ -89,7 +89,9 @@ Bot.on('join', channel => {
 }
 	});			
    	
-
+Bot.on('part', channel => {
+  console.log(`Bot left ${channel}`);
+})
 
 	
 	
@@ -104,7 +106,7 @@ Bot.on('error', err => {
  
 Bot.on('message', chatter => {
   if(chatter.message === '!help' || chatter.message.indexOf("help") != -1 || chatter.message.indexOf("Help") != -1) {
-    Bot.say('Contact one of our lovely mods for help with anything!');
+    Bot.say('Commands: !help \n !discord \n !dice');
    
   }	
 	
@@ -112,9 +114,14 @@ Bot.on('message', chatter => {
     Bot.say('Join our ranch! We got da horses in da back! https://discord.gg/khQuZ62')
   }
 
-  if(chatter.message === '!spotify' || chatter.message.indexOf("spotify") != -1 || chatter.message.indexOf("Spotify") != -1 || chatter.message.indexOf("Spotify?") != -1 || chatter.message.indexOf("spotify?") != -1) {
-    Bot.say('Join our ranch! We got da horses in da back! https://discord.gg/khQuZ62')
-  }
+  if(chatter.message === '!dice') {
+	  var die1 = Math.floor(Math.random() * 6) + 1;
+	  var die2 = Math.floor(Math.random() * 6) + 1;
+    Bot.say('You rolled a ' + die1 + ' and  a ' + die2 + '!');
+  }		
+//   if(chatter.message === '!spotify' || chatter.message.indexOf("spotify") != -1 || chatter.message.indexOf("Spotify") != -1 || chatter.message.indexOf("Spotify?") != -1 || chatter.message.indexOf("spotify?") != -1) {
+//     Bot.say('Join our ranch! We got da horses in da back! https://discord.gg/khQuZ62')
+//   }
 
 if(chatter.username === 'Kamino_Shimobe' || chatter.display_name === 'Kamino_Shimobe' || chatter.username === 'psytician' || chatter.display_name === 'Psytician' || chatter.username === 'falsevibrato8' || chatter.display_name === 'falsevibrato8'){
   if(chatter.message === '!toggle'){
@@ -253,7 +260,7 @@ bot.on("ready", async () => {
 
 	console.log(`${bot.user.username} is ready!`);
 	
-	bot.user.setPresence({ status: 'online', game: { name: '&stream' } });
+	bot.user.setPresence({ status: 'online', game: { name: '&help' } });
 
 	
 
@@ -379,6 +386,8 @@ bot.on("message", async message => {
             			sql = `INSERT INTO stream (id, greeting) VALUES ('steelBarnBot', '${message.content}')`;
 				con.query(sql, console.log);
 				message.channel.send("Greeting updated to: \n **" + message.content + "**");
+				Bot.part('falsevibrato8')
+				Bot.join('falsevibrato8')
 				return;
             		}
 			});	
@@ -399,6 +408,8 @@ bot.on("message", async message => {
 				sql = `UPDATE stream SET greeting = '${message.content}' WHERE id = 'steelBarnBot'`;
 				con.query(sql, console.log);
 				message.channel.send("Greeting updated to: \n **" + message.content + "**");
+				Bot.part('falsevibrato8')
+				Bot.join('falsevibrato8')
 				return;
             		}
 			});	
@@ -416,8 +427,12 @@ bot.on("message", async message => {
 	
 	if(message.author.bot) return;
 	
+if(command === `${prefix}help`){
+	message.channel.send(`__${prefix}help__ : \n Pulls up this list \n __${prefix}stream__: \n Shares the stream link in discord channel. \n **ADMIN** \n __${prefix}greet__ : \n Sets the twitch greeting for bot.`);
+}	
+	
 if(command === `${prefix}stream`){
-	message.channel.send("False be streamin here: \n https://m.twitch.tv/falsevibrato8/profile \n GO CHECK HER OUT CUZ")
+	message.channel.send("False be streamin here: \n https://m.twitch.tv/falsevibrato8/profile \n GO CHECK HER OUT CUZ");
 }
 	
 if(command === `${prefix}info`){
