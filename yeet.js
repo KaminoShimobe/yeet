@@ -105,10 +105,10 @@ Bot.on('error', err => {
 })
  
 Bot.on('message', chatter => {
-  if(chatter.message === '!help' || chatter.message.indexOf("help") != -1 || chatter.message.indexOf("Help") != -1) {
-    Bot.say('Commands: !help \n !discord \n !dice');
+//   if(chatter.message === '!help' || chatter.message.indexOf("help") != -1 || chatter.message.indexOf("Help") != -1) {
+//     Bot.say('Commands: !help \n !discord \n !dice');
    
-  }	
+//   }	
 	
   if(chatter.message === '!discord' || chatter.message.indexOf("discord") != -1 || chatter.message.indexOf("Discord") != -1 || chatter.message.indexOf("Discord?") != -1 || chatter.message.indexOf("discord?") != -1) {
     Bot.say('Join our ranch! We got da horses in da back! https://discord.gg/khQuZ62')
